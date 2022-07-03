@@ -1,0 +1,33 @@
+.exercice {
+  padding: 2em;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s linear;
+}
+
+.exercice:hover {
+  transform: translateY(-7px);
+}
+
+.exercice__description {
+  margin-top: 1em;
+}
+
+.exercice__stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.2em 0;
+}
+
+.exercice__stack-item {
+  margin: 0.5em;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--clr-fg-alt);
+}
+
+.exercice .link--icon {
+  margin-left: 0.5em;
+}
