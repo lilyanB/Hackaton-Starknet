@@ -1,26 +1,57 @@
-# Declare this file as a StarkNet contract.
+# SPDX-License-Identifier: MIT
+# OpenZeppelin Contracts for Cairo v0.2.0 (token/erc721_enumerable/ERC721_Enumerable_Mintable_Burnable.cairo)
+
 %lang starknet
 
-from starkware.cairo.common.cairo_builtins import HashBuiltin
+from starkware.cairo.common.cairo_builtins import HashBuiltin, SignatureBuiltin
+from starkware.cairo.common.uint256 import Uint256
 
-# Define a storage variable.
+from openzeppelin.token.erc721.library import ERC721
+from openzeppelin.token.erc721_enumerable.library import ERC721_Enumerable
+from openzeppelin.introspection.ERC165 import ERC165
+from openzeppelin.access.ownable import Ownable
+
+#
+# Constructor
+#
 @storage_var
-func balance() -> (res : felt):
+func key()->(key : felt):
 end
 
-# Increases the balance by the given amount.
-@external
-func increase_balance{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-        amount : felt):
-    let (res) = balance.read()
-    balance.write(res + amount)
+
+@constructor
+func constructor{
+        syscall_ptr : felt*,
+        pedersen_ptr : HashBuiltin*,
+        range_check_ptr
+    }(
+        name: felt,
+        symbol: felt,
+        owner: felt
+    ):
+    ERC721.initializer(name, symbol)
+    ERC721_Enumerable.initializer()
+    Ownable.initializer(owner)
     return ()
 end
 
-# Returns the current balance.
-@view
-func get_balance{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (
-        res : felt):
-    let (res) = balance.read()
-    return (res)
+@external
+func create_key{
+        syscall_ptr : felt*,
+        pedersen_ptr : HashBuiltin*,
+        range_check_ptr
+    }(key : felt):
+key.write(1)
+end
+
+@external 
+func mint{
+        pedersen_ptr: HashBuiltin*,
+        syscall_ptr: felt*,
+        range_check_ptr
+    }(to: felt, tokenId: Uint256,key : felt ):
+    # Ownable.assert_only_owner()
+    assert(key = key.read())
+    ERC721_Enumerable._mint(to, tokenId)
+    return ()
 end
