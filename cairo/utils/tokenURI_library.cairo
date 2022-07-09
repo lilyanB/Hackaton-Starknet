@@ -3,37 +3,31 @@
 from starkware.cairo.common.alloc import alloc
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.cairo.common.uint256 import Uint256
+from starkware.cairo.common.bool import TRUE, FALSE
 
+from openzeppelin.token.erc721.library import ERC721
 
-from openzeppelin.token.erc721.library import _exists
-from openzeppelin.utils.ShortString import uint256_to_ss
-from openzeppelin.utils.Array import concat_arr
-
-
-from openzeppelin.utils.constants import TRUE, FALSE
-
+from utils.ShortString import uint256_to_ss
+from utils.Array import concat_arr
 
 #
 # Storage
 #
 
 @storage_var
-func ERC721_base_tokenURI(index: felt) -> (res: felt):
+func ERC721_base_tokenURI(index : felt) -> (res : felt):
 end
 
 @storage_var
-func ERC721_base_tokenURI_len() -> (res: felt):
+func ERC721_base_tokenURI_len() -> (res : felt):
 end
 
-
-func ERC721_tokenURI{
-        syscall_ptr: felt*,
-        pedersen_ptr: HashBuiltin*,
-        range_check_ptr
-    }(token_id: Uint256) -> (tokenURI_len: felt, tokenURI: felt*):
+func ERC721_tokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    token_id : Uint256
+) -> (tokenURI_len : felt, tokenURI : felt*):
     alloc_locals
 
-    let (exists) = _exists(token_id)
+    let (exists) = ERC721._exists(token_id)
     assert exists = TRUE
 
     # Return tokenURI with an array of felts, `${base_tokenURI}/${token_id}`
@@ -42,21 +36,15 @@ func ERC721_tokenURI{
     _ERC721_baseTokenURI(base_tokenURI_len, base_tokenURI)
     let (token_id_ss_len, token_id_ss) = uint256_to_ss(token_id)
     let (tokenURI, tokenURI_len) = concat_arr(
-        base_tokenURI_len,
-        base_tokenURI,
-        token_id_ss_len,
-        token_id_ss,
+        base_tokenURI_len, base_tokenURI, token_id_ss_len, token_id_ss
     )
 
     return (tokenURI_len=tokenURI_len, tokenURI=tokenURI)
 end
 
-
-func _ERC721_baseTokenURI{
-        syscall_ptr: felt*,
-        pedersen_ptr: HashBuiltin*,
-        range_check_ptr
-    }(base_tokenURI_len: felt, base_tokenURI: felt*):
+func _ERC721_baseTokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    base_tokenURI_len : felt, base_tokenURI : felt*
+):
     if base_tokenURI_len == 0:
         return ()
     end
@@ -66,23 +54,17 @@ func _ERC721_baseTokenURI{
     return ()
 end
 
-
-func ERC721_setBaseTokenURI{
-        syscall_ptr: felt*,
-        pedersen_ptr: HashBuiltin*,
-        range_check_ptr
-    }(tokenURI_len: felt, tokenURI: felt*):
+func ERC721_setBaseTokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    tokenURI_len : felt, tokenURI : felt*
+):
     _ERC721_setBaseTokenURI(tokenURI_len, tokenURI)
     ERC721_base_tokenURI_len.write(tokenURI_len)
     return ()
 end
 
-
-func _ERC721_setBaseTokenURI{
-        syscall_ptr: felt*,
-        pedersen_ptr: HashBuiltin*,
-        range_check_ptr
-    }(tokenURI_len: felt, tokenURI: felt*):
+func _ERC721_setBaseTokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    tokenURI_len : felt, tokenURI : felt*
+):
     if tokenURI_len == 0:
         return ()
     end
@@ -90,4 +72,3 @@ func _ERC721_setBaseTokenURI{
     _ERC721_setBaseTokenURI(tokenURI_len=tokenURI_len - 1, tokenURI=tokenURI + 1)
     return ()
 end
-
