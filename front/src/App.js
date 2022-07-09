@@ -1,5 +1,9 @@
 import { useContext } from 'react'
+import { Routes, Route } from "react-router-dom";
+
 import { ThemeContext } from './contexts/theme'
+import Game from './containers/Game'
+import GameId from './containers/GameId'
 import Header from './components/Header/Header'
 import About from './components/About/About'
 import Exercices from './components/Exercices/Exercices'
@@ -15,11 +19,19 @@ const App = () => {
     <div id='top' className={`${themeName} app`}>
       <Header />
 
-      <main>
-        <About />
-        <Exercices />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={
+          <main>
+            <About />
+            <Exercices />
+            <Contact />
+          </main>
+        } />
+        <Route path="/game/starknet" element={<Game />} />
+        <Route path="/game/starknet/:gameId" element={<GameId />} />
+      </Routes>
+
+
 
       <ScrollToTop />
       <Footer />
