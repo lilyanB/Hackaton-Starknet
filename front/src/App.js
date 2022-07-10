@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 
 import { ThemeContext } from './contexts/theme'
@@ -14,10 +14,11 @@ import './App.css'
 
 const App = () => {
   const [{ themeName }] = useContext(ThemeContext)
+  const [account, setAccount] = useState(undefined);
 
   return (
     <div id='top' className={`${themeName} app`}>
-      <Header />
+      <Header account={account} setAccount={setAccount} />
 
       <Routes>
         <Route path="/" element={
@@ -27,8 +28,8 @@ const App = () => {
             <Contact />
           </main>
         } />
-        <Route path="/game/starknet" element={<Game />} />
-        <Route path="/game/starknet/:gameId" element={<GameId />} />
+        <Route path="/game/starknet" element={<Game account={account} />} />
+        <Route path="/game/starknet/:gameId" element={<GameId account={account} />} />
       </Routes>
 
 

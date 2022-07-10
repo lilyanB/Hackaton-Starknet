@@ -1,6 +1,6 @@
 import uniqid from 'uniqid'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LaunchIcon from '@material-ui/icons/Launch'
+// import GitHubIcon from '@mui/icons-material//GitHub'
+// import LaunchIcon from '@mui/icons-material/Launch'
 import './ExerciceContainer.css'
 
 const ExerciceContainer = ({ exercice }) => (
@@ -24,7 +24,7 @@ const ExerciceContainer = ({ exercice }) => (
         aria-label='source code'
         className='link link--icon'
       >
-        <GitHubIcon />
+        {/* <GitHubIcon /> */}
       </a>
     )}
 
@@ -34,7 +34,7 @@ const ExerciceContainer = ({ exercice }) => (
         aria-label='live preview'
         className='link link--icon'
       >
-        <LaunchIcon />
+        {/* <LaunchIcon /> */}
       </a>
     )}
   </div>

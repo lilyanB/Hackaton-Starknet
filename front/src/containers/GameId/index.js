@@ -1,19 +1,51 @@
 import { useContext } from 'react'
+import { stark } from "starknet"
 import { ThemeContext } from 'contexts/theme'
 import { useFormik } from 'formik';
 import { baseUrl } from '../../constants'
 
-const SignupForm = () => {
+
+
+async function submitGame({ account, submissionValue }) {
+    // Check if connection was successful
+    // if (starknet.isConnected) {
+    // If the extension was installed and successfully connected, you have access to a starknet.js Signer object to do all kinds of requests through the user's wallet contract.
+    if (account) {
+        const response = await account.execute(
+            {
+                contractAddress:
+                    "0x05f811ba827f477f7743de0afe54dc9074612e8cf32c8500605f5a07942a7e01".toLowerCase(), // fee token address on devnet
+                entrypoint: "submit_answer",
+                calldata: stark.compileCalldata({
+                    answer: submissionValue
+                }),
+            }
+        )
+        await account.waitForTransaction(response.transaction_hash, 1e3)
+    } else {
+        alert("Please connect wallet.")
+    }
+
+    // } else {
+    //     // In case the extension wasn't successfully connected you still have access to a starknet.js Provider to read starknet states and sent anonymous transactions
+    //     starknet.provider.callContract(... )
+    // }
+
+}
+
+const SignupForm = ({ account }) => {
     // Pass the useFormik() hook initial form values and a submit function that will
     // be called when the form is submitted
+
     const formik = useFormik({
         initialValues: {
             submission_value: '',
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: ({ submission_value: submissionValue }) => {
+            submitGame({ account, submissionValue })
         },
     });
+
     return (
         <form onSubmit={formik.handleSubmit} className="flex flex-col space-y-4 w-full border-2 border-rose-500">
             {/* <label htmlFor="email">Email Address</label> */}
@@ -38,9 +70,8 @@ const SignupForm = () => {
 
 
 
-const GameId = () => {
+const GameId = ({ account }) => {
     const [{ themeName }] = useContext(ThemeContext)
-
     return (
         <main className='container flex flex-col'>
             <h2 className='w-full py-4'>
@@ -63,7 +94,7 @@ const GameId = () => {
                     </div>
                     <div className='w-1/2 center flex-col'>
                         <h4 className='block py-2 m-auto'>Do you have the answer?</h4>
-                        <SignupForm />
+                        <SignupForm account={account} />
                         <div className='flex flex-row w-full space-x-10 py-8'>
                             <div className='flex flex-row'>
                                 {/* <div className='w-full h-full py-4'>
