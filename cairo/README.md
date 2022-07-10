@@ -117,4 +117,15 @@ All games give you an NFT on your ArgentX wallet
 We use Pinata to save NFT with their metada
 
 JSON : https://gateway.pinata.cloud/ipfs/QmXFR49PKWrECRPvErhreps5nzdeznmCZS6nSG9ZndnDKE
+
 PNG : https://gateway.pinata.cloud/ipfs/QmRofmXeHcdQjCNfTcCNt9nuYLsFFYk7ief9cjiqkA5PHp
+
+https://gateway.pinata.cloud/ipfs/QmXFR49PKWrECRPvErhreps5nzdeznmCZS6nSG9ZndnDKE/
+
+convert to :
+
+[
+  184555836509371486644298270517380613565396767415278678887948391494588524912n,
+  181013377130046948833909150447640617212512516586008272505834082728746312805n,
+  2730310445978494220010408865459748004030006575n
+]
