@@ -1,49 +1,9 @@
-## ⚠️ Note from Aspect Team ⚠️
-This repo is a fork of the OpenZeppelin contracts. The reason for the fork was to have long string support for `tokenURI` on ERC721 contracts. This is required to show images on Aspect.
-
-When OpenZeppelin support long strings TokenURIs for ERC721, we will defer the standard to OpenZeppelin and follow their standards.
-
-# Deploy `TokenURI` Compaitable ERC721 Cairo Contracts on `Aspect`
-
-Deploy `/cairo-contracts/openzeppelin/token/erc721/ERC721_Mintable_Burnable_LongTokenURI.cairo` to StarkNet to have the NFTs available for trading on [Aspect](https://aspect.co/). Please see the [Cairo documentation](https://www.cairo-lang.org/docs/) for more information on deploying contracts.
-
-## Need help? Contact us:
-
-- [Discord](https://discord.gg/aR2U7KtbgD)
-- [Twitter](https://twitter.com/aspectdotco)
-
----
-
-- Discord: 0xmonkeyy#0981
-- Twitter: 0xmonkeyy
-
----
-
-- Discord: 0xSean#1534
-- Twitter: 0xs34n
-
-
-
-# OpenZeppelin Cairo Contracts
-[![Tests and linter](https://github.com/OpenZeppelin/cairo-contracts/actions/workflows/python-app.yml/badge.svg)](https://github.com/OpenZeppelin/cairo-contracts/actions/workflows/python-app.yml)
-
-**A library for secure smart contract development** written in Cairo for [StarkNet](https://starkware.co/product/starknet/), a decentralized ZK Rollup.
-
-> ## ⚠️ WARNING! ⚠️
-> This is repo contains highly experimental code.
-> Expect rapid iteration.
-> **Do not use in production.**
-
 ## Installation
 
 ### First time?
 
-Before installing Cairo on your machine, you need to install `gmp`:
-```bash
-sudo apt install -y libgmp3-dev # linux
-brew install gmp # mac
-```
-> If you have any troubles installing gmp on your Apple M1 computer, [here’s a list of potential solutions](https://github.com/OpenZeppelin/nile/issues/22).
+Go to this [website](https://starknet.io/docs/quickstart.html#quickstart) to configur your machine
+
 
 ### Set up the project
 Clone the repository
@@ -128,3 +88,29 @@ Please report any security issues you find to security@openzeppelin.org.
 ## License
 
 OpenZeppelin Cairo Contracts is released under the [MIT License](LICENSE).
+
+
+
+# play
+
+## Game 1
+
+look at the statement on our site then give the answer to the "submit_answer" function
+
+## Game 2
+
+When you use ArgentX to run the "submit_answer" function, you can see error_message with the explanation. The real answer is inside this error.
+
+## Game 3
+
+You will use [Voyager](https://goerli.voyager.online/) to see functions and interact with them
+Activate "get_nft_contract_addr" to see the answers of response.
+
+## Game 4
+
+You will use [Voyager](https://goerli.voyager.online/) to see functions and interact with them
+use the functions to modify your variable.
+
+#NFT
+
+all games give you an NFT on your ArgentX wallet
