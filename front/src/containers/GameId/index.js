@@ -7,8 +7,8 @@ import { baseUrl, exercices } from '../../constants'
 
 
 
-async function submitGame({ account, submissionValue }) {
-    const { gameId } = useParams();
+async function submitGame({ gameId, account, submissionValue }) {
+
     const { address } = exercices[gameId - 1];
     // Check if connection was successful
     // if (starknet.isConnected) {
@@ -36,7 +36,7 @@ async function submitGame({ account, submissionValue }) {
 
 }
 
-const SignupForm = ({ account }) => {
+const SubmitForm = ({ account, gameId }) => {
     // Pass the useFormik() hook initial form values and a submit function that will
     // be called when the form is submitted
 
@@ -45,7 +45,7 @@ const SignupForm = ({ account }) => {
             submission_value: '',
         },
         onSubmit: ({ submission_value: submissionValue }) => {
-            submitGame({ account, submissionValue })
+            submitGame({ gameId, account, submissionValue })
         },
     });
 
@@ -100,7 +100,7 @@ const GameId = ({ account }) => {
                     </div>
                     <div className='w-1/2 center flex-col'>
                         <h4 className='block py-2 m-auto'>Do you have the answer?</h4>
-                        <SignupForm account={account} />
+                        <SubmitForm account={account} gameId={gameId} />
                         <div className='flex flex-row w-full space-x-10 py-8'>
                             <div className='flex flex-row'>
                                 {/* <div className='w-full h-full py-4'>
