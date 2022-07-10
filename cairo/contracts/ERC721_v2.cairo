@@ -22,17 +22,27 @@ from utils.tokenURI_library import ERC721_tokenURI, ERC721_setBaseTokenURI
 func total_supply() -> (total_supply : felt):
 end
 
+@storage_var
+func exoNumber() -> (exoNumber : felt):
+end
+
 #
 # Constructor
 #
 
 @constructor
 func constructor{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-    name : felt, symbol : felt, owner : felt, tokenURI_len : felt, tokenURI : felt*
+    name : felt,
+    symbol : felt,
+    owner : felt,
+    exoNumber_ : felt,
+    tokenURI_len : felt,
+    tokenURI : felt*,
 ):
     ERC721.initializer(name, symbol)
     Ownable.initializer(owner)
     ERC721_setBaseTokenURI(tokenURI_len, tokenURI)
+    exoNumber.write(exoNumber_)
     return ()
 end
 
@@ -102,7 +112,8 @@ end
 func tokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     tokenId : Uint256
 ) -> (tokenURI_len : felt, tokenURI : felt*):
-    let (tokenURI_len : felt, tokenURI : felt*) = ERC721_tokenURI(tokenId)
+    let (exoNumber_) = exoNumber.read()
+    let (tokenURI_len : felt, tokenURI : felt*) = ERC721_tokenURI(tokenId, exoNumber_)
     return (tokenURI_len=tokenURI_len, tokenURI=tokenURI)
 end
 
