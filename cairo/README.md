@@ -113,4 +113,8 @@ use the functions to modify your variable.
 
 #NFT
 
-all games give you an NFT on your ArgentX wallet
+All games give you an NFT on your ArgentX wallet
+We use Pinata to save NFT with their metada
+
+JSON : https://gateway.pinata.cloud/ipfs/QmXFR49PKWrECRPvErhreps5nzdeznmCZS6nSG9ZndnDKE
+PNG : https://gateway.pinata.cloud/ipfs/QmRofmXeHcdQjCNfTcCNt9nuYLsFFYk7ief9cjiqkA5PHp
