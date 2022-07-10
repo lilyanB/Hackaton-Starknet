@@ -8,6 +8,8 @@ import { baseUrl, exercices } from '../../constants'
 
 
 async function submitGame({ account, submissionValue }) {
+    const { gameId } = useParams();
+    const { address } = exercices[gameId - 1];
     // Check if connection was successful
     // if (starknet.isConnected) {
     // If the extension was installed and successfully connected, you have access to a starknet.js Signer object to do all kinds of requests through the user's wallet contract.
@@ -15,7 +17,7 @@ async function submitGame({ account, submissionValue }) {
         const response = await account.execute(
             {
                 contractAddress:
-                    "0x05f811ba827f477f7743de0afe54dc9074612e8cf32c8500605f5a07942a7e01".toLowerCase(), // fee token address on devnet
+                    address.toLowerCase(), // fee token address on devnet
                 entrypoint: "submit_answer",
                 calldata: stark.compileCalldata({
                     answer: submissionValue

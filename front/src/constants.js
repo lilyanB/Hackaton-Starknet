@@ -1,6 +1,6 @@
 const header = {
   // all the properties are optional - can be left empty or deleted
-  homepage: 'https://github.com/lilyanB/Hackaton-Starknet',
+  homepage: 'https://hackaton-starknet.vercel.app/',
   title: 'JS.',
 }
 
@@ -21,6 +21,7 @@ const exercices = [
   // exercices can be added an removed
   // if there are no exercices, Exercices section won't show up
   {
+    id: 1,
     name: 'Game 1',
     description:
       'Puzzles : information research',
@@ -28,9 +29,10 @@ const exercices = [
     stack: ['Cryptography', 'Internet'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    contract: "",
+    address: "0x00a364b95aee116889badb868b9ab52d3370fc9d15b7b3bbed14bd361e6eedd7",
   },
   {
+    id: 2,
     name: 'Game 2',
     description:
       'Use of Voyager',
@@ -38,9 +40,10 @@ const exercices = [
     stack: ['Voyager', 'Transactions', 'Blocks'],
     sourceCode: 'https://github.com',
     livePreview: 'https://voyager.online/',
-    contract: "",
+    address: "0x027d841ffcf7453e3c59c9c1a7304ac1c3a6d3112e3ce713200f73e66e5d8515",
   },
   {
+    id: 3,
     name: 'Game 3',
     description:
       'Code review, Functions to activate',
@@ -48,9 +51,10 @@ const exercices = [
     question: "Use Voyager to interact with the contract. Here is the 'submit_answer' function: It's up to you to find the answer",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    contract: "",
+    address: "0x01fdfd285e23521d5a34a4433f3e09abbd9b467efc3fdd5c368aca5d3e7e45a0",
   },
   {
+    id: 4,
     name: 'Game 4',
     description:
       'Deployment of a contract',
@@ -58,7 +62,7 @@ const exercices = [
     question: "You must activate the 'submit_answer' function when your variable is equal to 10. use voyager to observe and modify your variable.",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
-    contract: "",
+    address: "0x03de7a1d787bf9a01349a18eb4bbb0f04b722acd5017fe825c1502ad8cdf0286",
   }
 ]
 
