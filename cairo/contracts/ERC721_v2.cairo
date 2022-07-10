@@ -1,14 +1,14 @@
 # SPDX-License-Identifier: MIT
-# OpenZeppelin Cairo Contracts v0.1.0 (token/erc721/ERC721_Mintable_Burnable.cairo)
+# OpenZeppelin Contracts for Cairo v0.2.0 (token/erc721/ERC721_Mintable_Burnable.cairo)
 
 %lang starknet
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin, SignatureBuiltin
 from starkware.cairo.common.uint256 import Uint256
-from starkware.cairo.common.math import assert_not_zero
 
 from openzeppelin.token.erc721.library import ERC721
 from openzeppelin.introspection.ERC165 import ERC165
+
 from openzeppelin.access.ownable import Ownable
 
 from utils.tokenURI_library import ERC721_tokenURI, ERC721_setBaseTokenURI
@@ -93,6 +93,12 @@ func isApprovedForAll{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_ch
 end
 
 @view
+func owner{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}() -> (owner : felt):
+    let (owner : felt) = Ownable.owner()
+    return (owner)
+end
+
+@view
 func tokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     tokenId : Uint256
 ) -> (tokenURI_len : felt, tokenURI : felt*):
@@ -105,55 +111,38 @@ end
 #
 
 @external
-func transfer_ownership{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
-    new_owner : felt
-):
-    with_attr error_message("Ownable: new owner is the zero address"):
-        assert_not_zero(new_owner)
-    end
-    Ownable._transfer_ownership(new_owner)
-    return ()
-end
-
-# func increment_total_supply():
-#     let (total_supply) = total_supply.read()
-#     total_supply.write(total_supply + 1)
-#     return ()
-# end
-
-@external
 func approve{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
     to : felt, tokenId : Uint256
 ):
-    ERC721.approve(to, tokenId)
+    # ERC721.approve(to, tokenId)
     return ()
 end
 
-# @external
+@external
 func setApprovalForAll{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
     operator : felt, approved : felt
 ):
-    ERC721.set_approval_for_all(operator, approved)
+    # ERC721.set_approval_for_all(operator, approved)
     return ()
 end
 
-# @external
+@external
 func transferFrom{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
-    _from : felt, to : felt, tokenId : Uint256
+    from_ : felt, to : felt, tokenId : Uint256
 ):
-    ERC721.transfer_from(_from, to, tokenId)
+    # ERC721.transfer_from(from_, to, tokenId)
     return ()
 end
 
-# @external
+@external
 func safeTransferFrom{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
-    _from : felt, to : felt, tokenId : Uint256, data_len : felt, data : felt*
+    from_ : felt, to : felt, tokenId : Uint256, data_len : felt, data : felt*
 ):
-    ERC721.safe_transfer_from(_from, to, tokenId, data_len, data)
+    # ERC721.safe_transfer_from(from_, to, tokenId, data_len, data)
     return ()
 end
 
-# @external
+@external
 func setTokenURI{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
     tokenURI_len : felt, tokenURI : felt*
 ):
@@ -163,17 +152,31 @@ func setTokenURI{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_p
 end
 
 @external
-func mint{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
-    to : felt, tokenId : Uint256
-):
+func mint{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(to : felt):
     Ownable.assert_only_owner()
-    ERC721._mint(to, tokenId)
+    let (nb_token) = total_supply.read()
+    ERC721._mint(to, Uint256(nb_token + 1, 0))
+    total_supply.write(nb_token + 1)
     return ()
 end
 
-# @external
-# func burn{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(tokenId : Uint256):
-#     ERC721.assert_only_token_owner(tokenId)
-#     ERC721._burn(tokenId)
-#     return ()
-# end
+@external
+func burn{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(tokenId : Uint256):
+    ERC721.assert_only_token_owner(tokenId)
+    ERC721._burn(tokenId)
+    return ()
+end
+
+@external
+func transferOwnership{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}(
+    newOwner : felt
+):
+    # Ownable.transfer_ownership(newOwner)
+    return ()
+end
+
+@external
+func renounceOwnership{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_check_ptr}():
+    Ownable.renounce_ownership()
+    return ()
+end
