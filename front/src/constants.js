@@ -59,4 +59,6 @@ const contact = {
   email: 'hackaton-team@mail.com',
 }
 
-export { header, about, exercices, contact }
+const baseUrl = "http://localhost:3000/"
+
+export { header, about, exercices, contact, baseUrl }
