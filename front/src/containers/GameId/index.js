@@ -1,8 +1,9 @@
 import { useContext } from 'react'
+import { useParams } from 'react-router-dom';
 import { stark } from "starknet"
 import { ThemeContext } from 'contexts/theme'
 import { useFormik } from 'formik';
-import { baseUrl } from '../../constants'
+import { baseUrl, exercices } from '../../constants'
 
 
 
@@ -72,6 +73,8 @@ const SignupForm = ({ account }) => {
 
 const GameId = ({ account }) => {
     const [{ themeName }] = useContext(ThemeContext)
+    const { gameId } = useParams();
+    const exo = exercices[gameId - 1];
     return (
         <main className='container flex flex-col'>
             <h2 className='w-full py-4'>
@@ -79,17 +82,18 @@ const GameId = ({ account }) => {
             </h2>
             <div className='w-full relative py-4'>
                 <div className="absolute top rounded-full h-4 bg-gray-500 w-full" />
-                <div className="absolute top rounded-full h-4 bg-teal-500 w-1/4" />
+                <div className='absolute top rounded-full h-4 bg-teal-500' style={{ width: `${(gameId) / 4 * 100}%` }} />
+                {/* <div className={`absolute top rounded-full h-4 bg-teal-500 w-${gameId - 1}/4`} /> */}
             </div>
             <div className='py-8'>
                 <h3 className='py-4'>
-                    GAME 1 - Enigma
+                    GAME {gameId} - {exo.description}
                 </h3>
                 <div className='w-full flex flex-row space-x-10'>
                     <div className='w-1/2 flex flex-col'>
-                        <h4 className='w-full block py-2'>What are ASCII and hexadecimal ?</h4>
+                        <h4 className='w-full block py-2'>{exo.description}</h4>
                         <p>
-                            Eiusmod dolor aliquip nostrud nisi consequat ipsum esse ut nulla consequat eiusmod fugiat laboris. Nisi laboris cillum ea occaecat in cillum pariatur fugiat incididunt. Duis cupidatat reprehenderit pariatur labore eiusmod sit laborum et amet. Cupidatat do non culpa eiusmod aute ad pariatur ullamco amet ad id incididunt adipisicing excepteur. Laborum incididunt consequat aute voluptate velit.
+                            {exo.question}
                         </p>
                     </div>
                     <div className='w-1/2 center flex-col'>

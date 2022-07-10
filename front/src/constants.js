@@ -21,36 +21,44 @@ const exercices = [
   // exercices can be added an removed
   // if there are no exercices, Exercices section won't show up
   {
-    name: 'Exercise 1',
+    name: 'Game 1',
     description:
-      'puzzles : information searches',
-    stack: ['Cryptographie', 'internet'],
+      'Puzzles : information research',
+    question: "The bitcoinCore program modifies its difficulty according to the power of the network to tend to a time X to create a transaction block. What is this X time?",
+    stack: ['Cryptography', 'Internet'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    contract: "",
   },
   {
-    name: 'Exercise 2',
+    name: 'Game 2',
     description:
-      'use of Voyager',
-    stack: ['voyager', 'Transactions', 'Blocks'],
+      'Use of Voyager',
+    question: "The administrator has set a value. The goal is for you to find this value. Use ArgentX polur to activate the 'submit_answer' function, argentX will give you an error, observe the error 😉",
+    stack: ['Voyager', 'Transactions', 'Blocks'],
     sourceCode: 'https://github.com',
     livePreview: 'https://voyager.online/',
+    contract: "",
   },
   {
-    name: 'Exercise 3',
+    name: 'Game 3',
     description:
-      'code review, functions to activate',
-    stack: ['observer', 'audit'],
+      'Code review, Functions to activate',
+    stack: ['Observe', 'Audit'],
+    question: "Use Voyager to interact with the contract. Here is the 'submit_answer' function: It's up to you to find the answer",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    contract: "",
   },
   {
-    name: 'Exercise 4',
+    name: 'Game 4',
     description:
-      'deployment of a contract',
-    stack: ['Linux', 'starknet', 'node.js'],
+      'Deployment of a contract',
+    stack: ['Linux', 'Starknet', 'node.js'],
+    question: "You must activate the 'submit_answer' function when your variable is equal to 10. use voyager to observe and modify your variable.",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
+    contract: "",
   }
 ]
 
