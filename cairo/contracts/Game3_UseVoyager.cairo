@@ -57,7 +57,6 @@ end
 func submit_answer{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check_ptr}(
     answer : felt
 ):
-    let (secret_value) = game_secret_value.read()
     let (answer_hash) = hash2{hash_ptr=pedersen_ptr}(answer, 0)
     let (caller_address) = get_caller_address()
     let (contract_address) = nft_contract_addr.read()

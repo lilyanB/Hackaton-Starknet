@@ -1,0 +1,88 @@
+[
+    {
+        "data": [
+            {
+                "name": "previousOwner",
+                "type": "felt"
+            },
+            {
+                "name": "newOwner",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "name": "owner",
+                "type": "felt"
+            }
+        ],
+        "name": "constructor",
+        "outputs": [],
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "get_nft_contract_addr",
+        "outputs": [
+            {
+                "name": "nft_contract_addr",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "answer",
+                "type": "felt"
+            }
+        ],
+        "name": "submit_answer",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "my_value",
+                "type": "felt"
+            }
+        ],
+        "name": "set_game_secret_value",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "address",
+                "type": "felt"
+            }
+        ],
+        "name": "set_nft_adress",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "tokenURI_len",
+                "type": "felt"
+            },
+            {
+                "name": "tokenURI",
+                "type": "felt*"
+            }
+        ],
+        "name": "setTokenURI",
+        "outputs": [],
+        "type": "function"
+    }
+]

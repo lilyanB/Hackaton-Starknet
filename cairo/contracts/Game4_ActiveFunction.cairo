@@ -70,13 +70,14 @@ func submit_answer{pedersen_ptr : HashBuiltin*, syscall_ptr : felt*, range_check
 
     let (sender_address) = get_caller_address()
     let (current_value) = value.read(sender_address)
+    let (contract_address) = nft_contract_addr.read()
     # Checking that the value sent is correct
     # Using assert this way is similar to using "require" in Solidity
     with_attr error_message("Wrong adress value"):
         assert current_value = 10
     end
 
-    ERC721.mint(contract_address=contract_address, to=caller_address)  # a voir pour le tokenID
+    ERC721.mint(contract_address=contract_address, to=sender_address)  # a voir pour le tokenID
 
     return ()
 end
