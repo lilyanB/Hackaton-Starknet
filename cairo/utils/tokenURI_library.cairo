@@ -34,7 +34,8 @@ func ERC721_tokenURI{syscall_ptr : felt*, pedersen_ptr : HashBuiltin*, range_che
     let (local base_tokenURI) = alloc()
     let (local base_tokenURI_len) = ERC721_base_tokenURI_len.read()
     _ERC721_baseTokenURI(base_tokenURI_len, base_tokenURI)
-    let (token_id_ss_len, token_id_ss) = uint256_to_ss(token_id)
+    # let (token_id_ss_len, token_id_ss) = uint256_to_ss(token_id)
+    let (token_id_ss_len, token_id_ss) = uint256_to_ss(Uint256(1, 0))
     let (tokenURI, tokenURI_len) = concat_arr(
         base_tokenURI_len, base_tokenURI, token_id_ss_len, token_id_ss
     )
