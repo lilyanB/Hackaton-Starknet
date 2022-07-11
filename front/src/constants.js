@@ -1,7 +1,7 @@
 const header = {
   // all the properties are optional - can be left empty or deleted
   homepage: 'https://hackaton-starknet.vercel.app/',
-  title: 'JS.',
+  title: 'HOME.',
 }
 
 const about = {
@@ -26,7 +26,7 @@ const exercices = [
     description:
       'Puzzles : information research',
     question: "The bitcoinCore program modifies its difficulty according to the power of the network to tend to a time X to create a transaction block. What is this X time?",
-    stack: ['Cryptography', 'Internet'],
+    stack: ['Cryptography', 'Internet', 'Bitcoin', 'Blocks'],
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
     address: "0x00a364b95aee116889badb868b9ab52d3370fc9d15b7b3bbed14bd361e6eedd7",
@@ -35,9 +35,9 @@ const exercices = [
     id: 2,
     name: 'Game 2',
     description:
-      'Use of Voyager',
+      'Puzzles : information deduction',
     question: "The administrator has set a value. The goal is for you to find this value. Use ArgentX polur to activate the 'submit_answer' function, argentX will give you an error, observe the error 😉",
-    stack: ['Voyager', 'Transactions', 'Blocks'],
+    stack: ['ArgentX', 'Transactions', 'error'],
     sourceCode: 'https://github.com',
     livePreview: 'https://voyager.online/',
     address: "0x027d841ffcf7453e3c59c9c1a7304ac1c3a6d3112e3ce713200f73e66e5d8515",
@@ -46,8 +46,8 @@ const exercices = [
     id: 3,
     name: 'Game 3',
     description:
-      'Code review, Functions to activate',
-    stack: ['Observe', 'Audit'],
+      'Use of Voyager',
+    stack: ['Voyager', 'functions'],
     question: "Use Voyager to interact with the contract. Here is the 'submit_answer' function: It's up to you to find the answer",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
@@ -57,8 +57,8 @@ const exercices = [
     id: 4,
     name: 'Game 4',
     description:
-      'Deployment of a contract',
-    stack: ['Linux', 'Starknet', 'node.js'],
+      'Puzzle: activate functions',
+    stack: ['Voyager', 'functions', 'deduction'],
     question: "You must activate the 'submit_answer' function when your variable is equal to 10. use voyager to observe and modify your variable.",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',

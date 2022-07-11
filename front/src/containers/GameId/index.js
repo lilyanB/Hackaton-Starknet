@@ -65,7 +65,7 @@ const SubmitForm = ({ account, gameId }) => {
                 />
             </div>
             <button type="submit" className=' w-full rounded-full font-bold text-2xl py-2' style={{ backgroundColor: 'var(--clr-fg)', color: 'var(--clr-bg)' }}>
-                Yes FREN
+                Submit
             </button>
         </form>
     );
@@ -80,7 +80,7 @@ const GameId = ({ account }) => {
     return (
         <main className='container flex flex-col'>
             <h2 className='w-full py-4'>
-                Help FREN become Starkpilled
+                Your progress
             </h2>
             <div className='w-full relative py-4'>
                 <div className="absolute top rounded-full h-4 bg-gray-500 w-full" />
@@ -111,17 +111,13 @@ const GameId = ({ account }) => {
 
                             </div>
                             <div className='flex-grow py-8'>
-                                <h5 className='py-2'>Your FREN attributes:</h5>
-                                <ul className='list-disc px-4'>
-                                    <li>
-                                        Kameha
-                                    </li>
-                                    <li>
-                                        Lorem
-                                    </li>
-                                    <li>
-                                        Ipsum
-                                    </li>
+                                <h5 className='py-2'>Key words:</h5>
+                                <ul className='list-disc px-4'>                             
+                                        {exo.stack.map((answer) => {
+                                            console.log("Entered");
+                                            // Return the element. Also pass key     
+                                            return (<li> {answer} </li>)
+                                        })}
                                 </ul>
                             </div>
                         </div>

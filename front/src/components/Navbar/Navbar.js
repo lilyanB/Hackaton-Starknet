@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { connect } from "@argent/get-starknet"
 // import Brightness2Icon from '@mui/icons-material/Brightness2'
@@ -12,6 +13,7 @@ import './Navbar.css'
 const Navbar = ({ account, setAccount }) => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext)
   const [showNavList, setShowNavList] = useState(false)
+  const navigage = useNavigate();
 
   const toggleNavList = () => setShowNavList(!showNavList)
 
@@ -37,13 +39,16 @@ const Navbar = ({ account, setAccount }) => {
       >
         {exercices.length ? (
           <li className='nav__list-item'>
-            <a
+            {/* <a
               href='#exercices'
               onClick={toggleNavList}
               className='link link--nav'
             >
               Exercices
-            </a>
+            </a> */}
+            <button type="button" className='link link--nav' onClick={() => {
+              navigage(`/game/starknet`)
+            }}>Exercices</button>
           </li>
         ) : null}
 

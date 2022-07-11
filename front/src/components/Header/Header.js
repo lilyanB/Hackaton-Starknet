@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import { header } from '../../constants'
 import Navbar from '../Navbar/Navbar'
 import './Header.css'
 
 
 const Header = ({ account, setAccount }) => {
+
+  const navigage = useNavigate();
 
   // async function connectWallet() {
   //   const starknet = await connect();
@@ -19,17 +22,13 @@ const Header = ({ account, setAccount }) => {
   //   setAccount(undefined);
   // }
 
-  const { homepage, title } = header
+  const { title } = header
   return (
     <header className='header center'>
       <h3>
-        {homepage ? (
-          <a href={homepage} className='link'>
-            {title}
-          </a>
-        ) : (
-          title
-        )}
+        <button type="button" className='link' onClick={() => {
+          navigage(`/`)
+        }}>{title}</button>
       </h3>
       <Navbar account={account} setAccount={setAccount} />
     </header>

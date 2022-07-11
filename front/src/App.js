@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"
 
 import { ThemeContext } from './contexts/theme'
 import Game from './containers/Game'
