@@ -71,6 +71,6 @@ const contact = {
   email: 'hackaton-team@mail.com',
 }
 
-const baseUrl = "http://localhost:3000/"
+const baseUrl = "https://hackaton-starknet.vercel.app/"
 
 export { header, about, exercices, contact, baseUrl }
