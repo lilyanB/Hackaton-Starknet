@@ -48,10 +48,11 @@ const exercices = [
     description:
       'Use of Voyager',
     stack: ['Voyager', 'functions'],
-    question: "Use Voyager to interact with the contract. Here is the 'submit_answer' function: It's up to you to find the answer",
+    question: "Use Voyager to interact with the contract. Here is the 'submit_answer' function bellow. It's up to you to find the answer",
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
     address: "0x01fdfd285e23521d5a34a4433f3e09abbd9b467efc3fdd5c368aca5d3e7e45a0",
+    img: "http://localhost:3000/game_3.png",
   },
   {
     id: 4,

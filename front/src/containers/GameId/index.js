@@ -97,6 +97,7 @@ const GameId = ({ account }) => {
                         <p>
                             {exo.question}
                         </p>
+                        {exo.img ? <img src={exo.img} alt="question-asset" /> : null}
                     </div>
                     <div className='w-1/2 center flex-col'>
                         <h4 className='block py-2 m-auto'>Do you have the answer?</h4>
