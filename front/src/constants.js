@@ -52,7 +52,7 @@ const exercices = [
     sourceCode: 'https://github.com',
     livePreview: 'https://github.com',
     address: "0x01fdfd285e23521d5a34a4433f3e09abbd9b467efc3fdd5c368aca5d3e7e45a0",
-    img: "http://localhost:3000/game_3.png",
+    img: "https://hackaton-starknet.vercel.app/game_3.png",
   },
   {
     id: 4,

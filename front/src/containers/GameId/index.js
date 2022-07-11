@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'
 import { stark } from "starknet"
 import { ThemeContext } from 'contexts/theme'
 import { useFormik } from 'formik';
@@ -74,6 +74,7 @@ const SubmitForm = ({ account, gameId }) => {
 
 
 const GameId = ({ account }) => {
+    const navigage = useNavigate();
     const [{ themeName }] = useContext(ThemeContext)
     const { gameId } = useParams();
     const exo = exercices[gameId - 1];
@@ -96,6 +97,10 @@ const GameId = ({ account }) => {
                         <h4 className='w-full block py-2'>{exo.description}</h4>
                         <p>
                             {exo.question}
+                        </p>
+                        <br/>
+                        <p>
+                            Use this adress in Voyager : {exo.address}
                         </p>
                         {exo.img ? <img src={exo.img} alt="question-asset" /> : null}
                     </div>
@@ -120,6 +125,16 @@ const GameId = ({ account }) => {
                                             return (<li> {answer} </li>)
                                         })}
                                 </ul>
+                                <p>
+                                    <button type="button" className='link' onClick={() => {
+                                        const next = Number(gameId) + 1
+                                        if (next > 4) {
+                                            navigage(`/game/starknet`)
+                                        }else {
+                                            navigage(`/game/starknet/${next}`)
+                                        }
+                                    }}>Next game</button>
+                                </p>
                             </div>
                         </div>
                     </div>
