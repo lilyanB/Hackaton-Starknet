@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { connect } from "@argent/get-starknet"
-// import Brightness2Icon from '@mui/icons-material/Brightness2'
-// import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'
+import Brightness2Icon from '@mui/icons-material/Brightness2'
+import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'
 // import MenuIcon from '@mui/icons-material/Menu'
 // import CloseIcon from '@mui/icons-material/Close'
 import { ThemeContext } from '../../contexts/theme'
@@ -68,10 +68,10 @@ const Navbar = ({ account, setAccount }) => {
       <button
         type='button'
         onClick={toggleTheme}
-        className='btn btn--icon nav__theme'
+        className='btn btn--icon nav__theme pr-4 m-4'
         aria-label='toggle theme'
       >
-        {/* {themeName === 'dark' ? <WbSunnyRoundedIcon /> : <Brightness2Icon />} */}
+        {themeName === 'dark' ? <WbSunnyRoundedIcon /> : <Brightness2Icon />}
       </button>
 
       <button

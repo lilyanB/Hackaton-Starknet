@@ -92,19 +92,18 @@ const GameId = ({ account }) => {
                 <h3 className='py-4'>
                     GAME {gameId} - {exo.description}
                 </h3>
-                <div className='w-full flex flex-row space-x-10'>
-                    <div className='w-1/2 flex flex-col'>
+                <div className='w-full flex flex-col md:flex-row md:space-x-10'>
+                    <div className='w-full md:w-1/2 flex flex-col space-y-4'>
                         <h4 className='w-full block py-2'>{exo.description}</h4>
                         <p>
                             {exo.question}
                         </p>
-                        <br/>
-                        <p>
-                            Use this adress in Voyager : {exo.address}
+                        <p className="">
+                            Use this adress in Voyager : <span className="block w-full overflow-hidden text-ellipsis px-2 rounded-full bg-gray-900 hover:bg-gray-800 select-all cursor-pointer" style={{ width: "" }}>{exo.address}</span>
                         </p>
                         {exo.img ? <img src={exo.img} alt="question-asset" /> : null}
                     </div>
-                    <div className='w-1/2 center flex-col'>
+                    <div className='w-full md:w-1/2 center flex-col'>
                         <h4 className='block py-2 m-auto'>Do you have the answer?</h4>
                         <SubmitForm account={account} gameId={gameId} />
                         <div className='flex flex-row w-full space-x-10 py-8'>
@@ -118,19 +117,19 @@ const GameId = ({ account }) => {
                             </div>
                             <div className='flex-grow py-8'>
                                 <h5 className='py-2'>Key words:</h5>
-                                <ul className='list-disc px-4'>                             
-                                        {exo.stack.map((answer) => {
-                                            console.log("Entered");
-                                            // Return the element. Also pass key     
-                                            return (<li> {answer} </li>)
-                                        })}
+                                <ul className='list-disc px-4'>
+                                    {exo.stack.map((answer) => {
+                                        console.log("Entered");
+                                        // Return the element. Also pass key     
+                                        return (<li> {answer} </li>)
+                                    })}
                                 </ul>
                                 <p>
                                     <button type="button" className='link' onClick={() => {
                                         const next = Number(gameId) + 1
                                         if (next > 4) {
                                             navigage(`/game/starknet`)
-                                        }else {
+                                        } else {
                                             navigage(`/game/starknet/${next}`)
                                         }
                                     }}>Next game</button>
