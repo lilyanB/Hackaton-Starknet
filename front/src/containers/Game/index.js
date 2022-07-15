@@ -8,14 +8,10 @@ const Game = () => {
     const [{ themeName }] = useContext(ThemeContext)
 
     return (
-        <Routes>
-            <Route path="/" element={
-                <main>
-                    <Exercices />
-                    <Contact />
-                </main>
-            } />
-        </Routes>
+        <main>
+            <Exercices />
+            <Contact />
+        </main>
     )
 }
 

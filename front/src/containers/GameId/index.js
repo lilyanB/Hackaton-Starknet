@@ -79,7 +79,7 @@ const GameId = ({ account }) => {
     const { gameId } = useParams();
     const exo = exercices[gameId - 1];
     return (
-        <main className='container flex flex-col'>
+        <main className='flex flex-col'>
             <h2 className='w-full py-4'>
                 Your progress
             </h2>

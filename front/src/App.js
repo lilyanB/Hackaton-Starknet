@@ -17,7 +17,7 @@ const App = () => {
   const [account, setAccount] = useState(undefined);
 
   return (
-    <div id='top' className={`${themeName} app`}>
+    <div id='top' className={`${themeName} app md:px-0 px-4`}>
       <Header account={account} setAccount={setAccount} />
 
       <Routes>
